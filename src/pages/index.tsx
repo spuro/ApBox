@@ -80,10 +80,6 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     fetchResources();
-    if (connectedAdapter !== null) {
-      console.log(connectedAdapter.publicAccount);
-      console.log(connectedAdapter.name);
-    }
   }, [connectedAdapter]);
 
   const handleConnect = async (
@@ -93,6 +89,7 @@ const Home: NextPage = () => {
       | HippoExtensionWalletAdapter
       | PontemWalletAdapter
   ) => {
+    handleDisconnect();
     if (_adapter !== connectedAdapter) {
       await connectedAdapter?.disconnect();
       await _adapter.connect();
