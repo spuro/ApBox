@@ -307,7 +307,7 @@ const Home: NextPage = () => {
             <p className="mt-2 text-center text-sm">
               Although these tools are tested before publishing, be aware you
               use them at your own risk. No one is responsible for any loss of
-              funds except for yourself. You can verify what you`&apos;`re
+              funds except for yourself. You can verify what you&apos;re
               interacting with by visiting the{" "}
               <a href="#" target="_blank" className="text-red-500 underline">
                 ApBox repo.

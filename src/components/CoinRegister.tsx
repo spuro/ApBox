@@ -176,8 +176,8 @@ function TokenRegister({ adapter, addressResources }: Props) {
               })}
         </div>
         <p className="mt-4 w-full text-center">
-          If what you`&apos;`re after isn`&apos;`t available above, (or you just
-          know what you`&apos;`re doing), register an asset via its address!
+          If what you&apos;re after isn&apos;t available above, (or you just
+          know what you&apos;re doing), register an asset via its address!
         </p>
         <div className="mt-4 flex flex-row items-center rounded-md border-2 border-red-600 p-4">
           <p className="mr-4 font-bold">Address:</p>
