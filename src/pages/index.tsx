@@ -223,7 +223,11 @@ const Home: NextPage = () => {
             </p>
             <p>
               Maintained by{" "}
-              <a href="https://twitter.com/spuro69" target="_blank">
+              <a
+                href="https://twitter.com/spuro69"
+                target="_blank"
+                rel="noreferrer"
+              >
                 @spuro69
               </a>
             </p>
@@ -232,6 +236,7 @@ const Home: NextPage = () => {
               <a
                 href="https://github.com/spuro/apbox"
                 target="_blank"
+                rel="noreferrer"
                 className="underline hover:text-red-500"
               >
                 GitHub
@@ -244,6 +249,7 @@ const Home: NextPage = () => {
               <a
                 href="https://github.com/spuro/apbox"
                 target="_blank"
+                rel="noreferrer"
                 className="underline hover:text-red-500"
               >
                 Submit an Issue on Github.
@@ -317,6 +323,7 @@ const Home: NextPage = () => {
               <a
                 href="https://github.com/spuro/apbox"
                 target="_blank"
+                rel="noreferrer"
                 className="text-red-500 underline"
               >
                 ApBox repo.

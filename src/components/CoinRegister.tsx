@@ -126,6 +126,8 @@ function TokenRegister({ adapter, addressResources }: Props) {
         Think an important coin is missing?{" "}
         <a
           href="https://github.com/spuro/apbox"
+          target="_blank"
+          rel="noreferrer"
           className="underline hover:text-red-600"
         >
           Submit a pull request!
