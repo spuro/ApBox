@@ -1,0 +1,20 @@
+[
+  {
+    "symbol": "whUSDC",
+    "name": "Wormhole USDC",
+    "description": "USDC issued and backed by the Wormhole bridge.",
+    "address": "0x5e156f1207d0ebfa19a9eeff00d62a282278fb8719f4fab3a586a0a2c0fffbea::coin::T"
+  },
+  {
+    "symbol": "zUSDC",
+    "name": "Layer Zero USDC",
+    "description": "USDC issued and backed by the Layer Zero bridge.",
+    "address": "0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::USDC"
+  },
+  {
+    "symbol": "APTOGE",
+    "name": "Aptos Doge",
+    "description": "The leading dog coin on Aptos.",
+    "address": "0x5c738a5dfa343bee927c39ebe85b0ceb95fdb5ee5b323c95559614f5a77c47cf::Aptoge::Aptoge"
+  }
+]

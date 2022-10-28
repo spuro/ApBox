@@ -1,0 +1,8 @@
+[
+  {
+    "symbol": "SBUX",
+    "name": "spuro Bux",
+    "description": "A coin deployed on devnet for you to test this tool with!",
+    "address": "0x536add31ce80c245a4614b79e70523cf11893040304ece618d12fe6717998b8c::spuro_bux::SpuroBux"
+  }
+]
