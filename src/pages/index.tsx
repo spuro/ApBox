@@ -221,11 +221,16 @@ const Home: NextPage = () => {
             <p>
               Quick and easy to use tools for Aptos users, developers and apes.
             </p>
-            <p>Maintained by @spuro69</p>
+            <p>
+              Maintained by{" "}
+              <a href="https://twitter.com/spuro69" target="_blank">
+                @spuro69
+              </a>
+            </p>
             <p>
               View on{" "}
               <a
-                href="#"
+                href="https://github.com/spuro/apbox"
                 target="_blank"
                 className="underline hover:text-red-500"
               >
@@ -237,7 +242,7 @@ const Home: NextPage = () => {
               Have a tool suggestion or feedback?
               <br />
               <a
-                href="#"
+                href="https://github.com/spuro/apbox"
                 target="_blank"
                 className="underline hover:text-red-500"
               >
@@ -309,7 +314,11 @@ const Home: NextPage = () => {
               use them at your own risk. No one is responsible for any loss of
               funds except for yourself. You can verify what you&apos;re
               interacting with by visiting the{" "}
-              <a href="#" target="_blank" className="text-red-500 underline">
+              <a
+                href="https://github.com/spuro/apbox"
+                target="_blank"
+                className="text-red-500 underline"
+              >
                 ApBox repo.
               </a>
             </p>

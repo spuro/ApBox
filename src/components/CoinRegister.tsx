@@ -124,7 +124,10 @@ function TokenRegister({ adapter, addressResources }: Props) {
         <br />
         <br />
         Think an important coin is missing?{" "}
-        <a href="#" className="underline hover:text-red-600">
+        <a
+          href="https://github.com/spuro/apbox"
+          className="underline hover:text-red-600"
+        >
           Submit a pull request!
         </a>
       </p>
