@@ -89,16 +89,20 @@ const Home: NextPage = () => {
       | HippoExtensionWalletAdapter
       | PontemWalletAdapter
   ) => {
-    handleDisconnect();
-    if (_adapter !== connectedAdapter) {
-      await connectedAdapter?.disconnect();
-      await _adapter.connect();
+    await handleDisconnect();
+    if (_adapter !== null) {
+      if (_adapter !== connectedAdapter) {
+        await connectedAdapter?.disconnect();
+        await _adapter.connect();
+      }
       setConnectedAdapter(_adapter);
     }
   };
 
   const handleDisconnect = async () => {
     if (connectedAdapter !== null) {
+      connectedAdapter.off("accountChange");
+      connectedAdapter.off("networkChange");
       await connectedAdapter.disconnect();
       setConnectedAdapter(null);
     }
@@ -152,7 +156,7 @@ const Home: NextPage = () => {
         );
       }
       case "coinCreator": {
-        return <CoinCreator unavailable={true} />;
+        return <CoinCreator adapter={connectedAdapter} />;
       }
       default: {
         return (
@@ -179,7 +183,7 @@ const Home: NextPage = () => {
           console.log("Handle Error Message", error);
         }}
       >
-        <main className="flex min-h-screen w-screen grid-cols-2 flex-row gap-4 bg-slate-100">
+        <main className="flex min-h-screen w-screen grid-cols-2 flex-row gap-4 bg-stone-800">
           <div
             style={{ display: walletSelect ? "flex" : "none" }}
             className="absolute z-20 flex h-screen w-screen items-center justify-center bg-black bg-opacity-70"
@@ -211,9 +215,9 @@ const Home: NextPage = () => {
               </button>
             </div>
           </div>
-          <div className="mt-4 mb-4 ml-4 max-w-[30%] rounded-md border-2 border-slate-400 bg-white p-8">
-            <h1 className="text-5xl font-extrabold leading-normal text-gray-700 md:text-[5rem]">
-              <span className="text-red-500">Ap</span>Box
+          <div className="mt-4 mb-4 ml-4 max-w-[30%] rounded-md bg-stone-900 p-8 text-stone-50 shadow-md">
+            <h1 className="text-center text-5xl font-extrabold leading-normal text-stone-50 md:text-[5rem]">
+              <span className="text-teal-500">Ap</span>Box
             </h1>
             <p>
               Quick and easy to use tools for Aptos users, developers and apes.
@@ -234,7 +238,7 @@ const Home: NextPage = () => {
                 href="https://github.com/spuro/apbox"
                 target="_blank"
                 rel="noreferrer"
-                className="underline hover:text-red-500"
+                className="underline hover:text-teal-500"
               >
                 GitHub
               </a>
@@ -256,14 +260,14 @@ const Home: NextPage = () => {
               {connectedAdapter !== null ? (
                 <button
                   onClick={() => setWalletSelect(true)}
-                  className="mt-2 flex items-center justify-center rounded-md border-2 border-red-500 bg-red-200 p-2 hover:bg-red-500 hover:text-white"
+                  className="mt-2 flex items-center justify-center rounded-md bg-teal-200 px-4 py-2 text-stone-600 transition-all hover:bg-teal-500 hover:text-stone-50"
                 >
                   Disconnect Wallet
                 </button>
               ) : (
                 <button
                   onClick={() => setWalletSelect(true)}
-                  className="mt-2 flex items-center justify-center rounded-md border-2 border-red-500 bg-red-200 p-2 hover:bg-red-500 hover:text-white"
+                  className="mt-2 flex items-center justify-center rounded-md bg-teal-200 px-4 py-2 text-stone-600 transition-all hover:bg-teal-500 hover:text-stone-50"
                 >
                   Connect Wallet
                 </button>
@@ -276,7 +280,7 @@ const Home: NextPage = () => {
                   ).slice(1, 8)}...`
                 : "You are not connected."}
             </p>
-            <p className="mt-6 text-xl font-semibold text-gray-700">
+            <p className="mt-6 text-center text-xl font-semibold text-teal-100">
               Tools Available:
             </p>
             <div className="mt-2 flex flex-col gap-6">
@@ -289,7 +293,6 @@ const Home: NextPage = () => {
                 <ToolEntry
                   name="Coin Register"
                   description="Allows you to register any given token. We have a list of known, common tokens, or you can input your own."
-                  price="Free!"
                 />
               </div>
               <div
@@ -300,8 +303,18 @@ const Home: NextPage = () => {
               >
                 <ToolEntry
                   name="Coin Creator"
-                  description="Create your own token! Customise it with your own symbol, name, icon and more! Requires a small fee."
-                  price="Coming soon."
+                  description="Create your own token! Customise it with your own symbol, name, icon and more!"
+                />
+              </div>
+              <div
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActive("coinManager");
+                }}
+              >
+                <ToolEntry
+                  name="Coin Manager"
+                  description="Manage any token your connected count has ownership of. Minting, burning, etc."
                 />
               </div>
             </div>
@@ -321,13 +334,13 @@ const Home: NextPage = () => {
                 href="https://github.com/spuro/apbox"
                 target="_blank"
                 rel="noreferrer"
-                className="text-red-500 underline"
+                className="text-teal-500 underline"
               >
                 ApBox repo.
               </a>
             </p>
           </div>
-          <div className="mr-4 mt-4 mb-4 h-full w-full rounded-md border-2 border-slate-400 bg-white p-8">
+          <div className="mr-4 mt-4 mb-4 h-full w-full rounded-md bg-stone-900 p-8">
             {activeTool(active)}
           </div>
         </main>
@@ -341,15 +354,13 @@ export default Home;
 type ToolEntryProps = {
   name: string;
   description: string;
-  price: string;
 };
 
-const ToolEntry = ({ name, description, price }: ToolEntryProps) => {
+const ToolEntry = ({ name, description }: ToolEntryProps) => {
   return (
-    <section className="flex cursor-pointer flex-col justify-center rounded border-2 border-gray-500 p-4 shadow-md transition-all hover:scale-105">
-      <h2 className="text-lg text-gray-700">{name}</h2>
-      <p className="mt-1 text-sm text-gray-600">{description}</p>
-      <p className="mt-1 text-sm text-red-600">{price}</p>
+    <section className="flex cursor-pointer flex-col justify-center rounded-t-md border-b-2 border-teal-200 bg-stone-800 p-4 shadow-md transition-all hover:scale-105">
+      <h2 className="text-lg font-bold text-teal-400  ">{name}</h2>
+      <p className="mt-1 text-sm text-stone-100">{description}</p>
     </section>
   );
 };
