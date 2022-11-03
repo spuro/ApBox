@@ -310,7 +310,7 @@ const Home: NextPage = () => {
               >
                 <ToolEntry
                   name="NFT History"
-                  description="View historical data for any collection on Topaz."
+                  description="View latest NFT sales on Topaz."
                 />
               </div>
             </div>
