@@ -58,24 +58,24 @@ function TokenRegister({ adapter, addressResources }: Props) {
     address,
   }: tokenEntryProps) => {
     return (
-      <div className="mb-5 rounded-md border-2 border-gray-300 p-2">
+      <div className="mb-5 rounded-md bg-stone-800 p-4">
         <div className="mb-1 flex flex-row justify-between">
           <div className="flex flex-row">
             <div className="flex w-max flex-col">
               <div className="min-w-[200px]">
                 <div className="flex flex-col">
-                  <p className="text-sm text-gray-500">Symbol</p>
-                  <p className="font-bold">{symbol}</p>
+                  <p className="text-sm text-teal-200">Symbol</p>
+                  <p className="font-bold text-stone-100">{symbol}</p>
                 </div>
                 <div className="flex flex-col">
-                  <p className="text-sm text-gray-500">Name</p>
-                  <p className="font-bold">{name}</p>
+                  <p className="text-sm text-teal-200">Name</p>
+                  <p className="font-bold text-stone-100">{name}</p>
                 </div>
               </div>
             </div>
             <div className="">
-              <p className="text-sm text-gray-500">Description</p>
-              <p>{description}</p>
+              <p className="text-sm text-teal-200">Description</p>
+              <p className="text-stone-100">{description}</p>
             </div>
           </div>
           <div className="relative flex items-center justify-center">
@@ -83,13 +83,13 @@ function TokenRegister({ adapter, addressResources }: Props) {
               addressResources?.filter((r) => {
                 return r.type === `0x1::coin::CoinStore<${address}>`;
               }).length > 0 ? (
-                <p className="rounded-md border-2 border-red-800 bg-red-800 p-2 text-white">
+                <p className="rounded-md bg-teal-800 p-2 text-stone-100">
                   Registered
                 </p>
               ) : (
                 <button
                   onClick={(e) => handleRegister(e, address)}
-                  className="rounded-md border-2 border-red-500 bg-red-200 p-2 transition-all hover:bg-red-500 hover:text-white"
+                  className="rounded-md bg-teal-200 p-2 transition-all hover:bg-teal-500 hover:text-stone-100"
                 >
                   Register
                 </button>
@@ -100,7 +100,7 @@ function TokenRegister({ adapter, addressResources }: Props) {
           </div>
         </div>
         <div>
-          <p className="text-sm text-gray-500">{address}</p>
+          <p className="text-sm text-stone-300">{address}</p>
         </div>
       </div>
     );
@@ -108,11 +108,11 @@ function TokenRegister({ adapter, addressResources }: Props) {
 
   return (
     <div>
-      <h2 className="text-center text-3xl font-semibold text-gray-800">
+      <h2 className="text-center text-3xl font-semibold text-teal-200">
         Coin Register
       </h2>
-      <p>
-        <span className="font-semibold text-gray-800">What is this for?</span>
+      <p className="text-stone-100">
+        <span className="font-semibold text-teal-200">What is this for?</span>
         <br />
         Coins on Aptos require a CoinStore. This is a resource bound to your
         address that, implied by the name, stores your coins. In many cases, a
@@ -133,12 +133,14 @@ function TokenRegister({ adapter, addressResources }: Props) {
           Submit a pull request!
         </a>
       </p>
-      <p className="m-auto my-4 w-max rounded-md bg-red-200 p-2 text-center">{`You are connected to ${
+      <p className="m-auto my-4 w-max rounded-md bg-teal-200 p-2 px-4 text-center">{`You are connected to ${
         adapter !== null ? adapter.network.name : "nothing."
       }`}</p>
       <div className="p4 m-4">
         <div className="mb-4 flex flex-row justify-between">
-          <p className="flex items-center justify-center">Search:</p>
+          <p className="flex items-center justify-center text-stone-100">
+            Search:
+          </p>
           <input
             onChange={(e) => setSearch(e.target.value)}
             className="border-1 rounded-md border-2 border-gray-300 p-1"
@@ -147,7 +149,7 @@ function TokenRegister({ adapter, addressResources }: Props) {
         </div>
         <div
           style={{ scrollbarWidth: "none" }}
-          className="mb-4 max-h-[500px] overflow-y-scroll rounded-md border-2 border-red-600 p-4"
+          className="mb-4 max-h-[500px] overflow-y-scroll rounded-md p-4"
         >
           {search === ""
             ? coinList.map((coin, i) => {
@@ -180,22 +182,24 @@ function TokenRegister({ adapter, addressResources }: Props) {
                 );
               })}
         </div>
-        <p className="mt-4 w-full text-center">
-          If what you&apos;re after isn&apos;t available above, (or you just
-          know what you&apos;re doing), register an asset via its address!
-        </p>
-        <div className="mt-4 flex flex-row items-center rounded-md border-2 border-red-600 p-4">
-          <p className="mr-4 font-bold">Address:</p>
-          <input
-            className="border-1 h-full w-full rounded-md border-2 border-gray-300 p-2"
-            onChange={(e) => setCustomAddress(e.target.value)}
-          />
-          <button
-            onClick={(e) => handleRegister(e, customAddress)}
-            className="ml-4 rounded-md border-2 border-red-500 bg-red-200 p-2 transition-all hover:bg-red-500 hover:text-white"
-          >
-            Submit
-          </button>
+        <div className="rounded-md bg-stone-800 p-4">
+          <p className="mt-4 w-full text-center text-stone-100">
+            If what you&apos;re after isn&apos;t available above, (or you just
+            know what you&apos;re doing), register an asset via its address!
+          </p>
+          <div className="mt-4 flex flex-row items-center rounded-md bg-stone-900 p-4">
+            <p className="mr-4 font-bold text-stone-100">Address:</p>
+            <input
+              className="border-1 h-full w-full rounded-md border-2 border-gray-300 p-2"
+              onChange={(e) => setCustomAddress(e.target.value)}
+            />
+            <button
+              onClick={(e) => handleRegister(e, customAddress)}
+              className="ml-4 rounded-md bg-teal-200 py-2 px-8 transition-all hover:bg-teal-500 hover:text-white"
+            >
+              Submit
+            </button>
+          </div>
         </div>
       </div>
     </div>
