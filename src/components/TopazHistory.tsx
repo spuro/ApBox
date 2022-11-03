@@ -11,7 +11,7 @@ type Props = {
 };
 
 function NFTHistory({ adapter, addressResources }: Props) {
-  const [topazHistory, setTopazHistory] = useState<Event[]>([]);
+  const [topazHistory, setTopazHistory] = useState([]);
 
   const fetchEvents = async () => {
     const txHistory = await client.getEventsByEventHandle(
