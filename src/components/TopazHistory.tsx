@@ -39,7 +39,7 @@ function NFTHistory({ adapter, addressResources }: Props) {
         <br />
         <br />
         Topaz will likely add more historical data. Unable to filter by
-        collection, but I'm working on another solution.
+        collection, but I&apos;m working on another solution.
       </p>
       <div className="mb-2 mt-2 flex items-center justify-center">
         <button
@@ -50,8 +50,12 @@ function NFTHistory({ adapter, addressResources }: Props) {
         </button>
       </div>
       <div className="mt-4 flex flex-col gap-2">
-        {topazHistory.map((event) => {
-          return <EventHistory event={event} />;
+        {topazHistory.map((event, i) => {
+          return (
+            <div key={i}>
+              <EventHistory event={event} />
+            </div>
+          );
         })}
       </div>
     </div>

@@ -89,11 +89,11 @@ function TokenCreator({ adapter }: Props) {
 
   return (
     <div>
-      <h2 className="text-center text-3xl font-semibold text-gray-800">
+      <h2 className="text-center text-3xl font-semibold text-teal-200">
         Coin Creator
       </h2>
-      <p>
-        <span className="font-semibold text-gray-800">What is this for?</span>
+      <p className="text-stone-100">
+        <span className="font-semibold text-teal-200">What is this for?</span>
         <br />
         Pretty simple, create your own coin. Decide on your name, symbol and
         supply. Coins your account have ownership of can also be managed via the
@@ -104,27 +104,27 @@ function TokenCreator({ adapter }: Props) {
           You can mint or burn supply after creating the coin.
         </span>
       </p>
-      <div className="mt-4 flex flex-col gap-4 rounded-md border-2 border-red-500 p-4">
-        <p className="mb-4 mt-2 text-center text-xl font-bold">
+      <div className="mt-4 flex flex-col gap-4 rounded-md p-4">
+        <p className="mb-4 mt-2 text-center text-xl font-bold text-teal-200">
           Enter Coin details below:
         </p>
-        <div className="flex flex-row justify-between rounded-md border-2 p-2">
+        <div className="flex flex-row justify-between rounded-md bg-stone-800 p-4">
           <div className="flex-flex-col">
-            <p className="font-bold">Enter your coin symbol:</p>
-            <p className="text-sm text-gray-700">e.g. BTC, ETH, APT, SBUX.</p>
+            <p className="font-bold text-teal-200">Enter your coin symbol:</p>
+            <p className="text-sm text-stone-100">e.g. BTC, ETH, APT, SBUX.</p>
           </div>
           <input
             type="text"
             onChange={(e) => {
               setCoinSymbol(e.target.value);
             }}
-            className="min-w-8 rounded-md border-2 border-gray-700 p-1"
+            className="min-w-8 rounded-md p-1"
           />
         </div>
-        <div className="flex flex-row justify-between rounded-md border-2 p-2">
+        <div className="flex flex-row justify-between rounded-md bg-stone-800 p-4">
           <div className="flex-flex-col">
-            <p className="font-bold">Enter your coin name:</p>
-            <p className="text-sm text-gray-700">
+            <p className="font-bold text-teal-200">Enter your coin name:</p>
+            <p className="text-sm text-stone-100">
               e.g. Bitcoin, Ethereum, Aptos, SpuroBux.
             </p>
           </div>
@@ -133,15 +133,15 @@ function TokenCreator({ adapter }: Props) {
             onChange={(e) => {
               setCoinName(e.target.value);
             }}
-            className="min-w-8 rounded-md border-2 border-gray-700 p-1"
+            className="min-w-8 rounded-md p-1"
           />
         </div>
-        <div className="flex flex-col rounded-md border-2 p-2">
+        <div className="flex flex-col rounded-md bg-stone-800 p-4">
           <div className="flex flex-row justify-between">
             <div className="flex-flex-col">
-              <p className="font-bold">Decimal count:</p>
-              <p className="text-sm text-gray-700">
-                The default on Aptos is 6. If you're unsure, just enter 6.
+              <p className="font-bold text-teal-100">Decimal count:</p>
+              <p className="text-sm text-stone-100">
+                The default on Aptos is 6. If you&apos;re unsure, just enter 6.
               </p>
             </div>
             <input
@@ -150,30 +150,30 @@ function TokenCreator({ adapter }: Props) {
                 setCoinDecimals(Number(e.target.value));
               }}
               defaultValue={6}
-              className="min-w-8 rounded-md border-2 border-gray-700 p-1"
+              className="min-w-8 rounded-md p-1"
             />
           </div>
-          <p className="text-center font-bold text-red-500">
+          <p className="text-center font-bold text-teal-500">
             {decimalError !== null && decimalError.length > 0
               ? decimalError
               : ""}
           </p>
         </div>
-        <div className="flex flex-col rounded-md border-2 p-2">
+        <div className="flex flex-col rounded-md bg-stone-800 p-4">
           <div className="flex flex-row justify-between">
             <div className="flex-flex-col">
-              <p className="font-bold">Monitor supply?</p>
-              <p className="text-sm text-gray-700">
+              <p className="font-bold text-teal-200">Monitor supply?</p>
+              <p className="text-sm text-stone-100">
                 Track supply or not. Read more{" "}
                 <a
                   href="https://aptos.dev/concepts/coin-and-token/aptos-coin/#creating-a-new-cointype"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-red-500 underline"
+                  className="text-teal-500 underline"
                 >
                   here.
                 </a>{" "}
-                Unsure? Just click 'yes'.
+                Unsure? Just click &apos;yes&apos;.
               </p>
             </div>
             <div className="grid h-2 grid-cols-2 gap-2">
@@ -182,7 +182,7 @@ function TokenCreator({ adapter }: Props) {
                   onClick={() => setCoinMonitor(true)}
                   className={`${
                     coinMonitor ? "" : "brightness-50"
-                  } h-full w-full cursor-pointer rounded-md bg-green-500 py-2 px-4 text-center text-white transition-all hover:brightness-90`}
+                  } h-full w-full cursor-pointer rounded-md bg-green-500 py-2 px-4 text-center text-stone-100 transition-all hover:brightness-90`}
                 >
                   Yes
                 </button>
@@ -191,7 +191,7 @@ function TokenCreator({ adapter }: Props) {
                 onClick={() => setCoinMonitor(false)}
                 className={`${
                   coinMonitor ? "brightness-50" : ""
-                } h-full w-full cursor-pointer rounded-md bg-red-500 py-2 px-4 text-center text-white transition-all hover:brightness-90`}
+                } h-full w-full cursor-pointer rounded-md bg-red-500 py-2 px-4 text-center text-stone-100 transition-all hover:brightness-90`}
               >
                 No
               </div>
@@ -201,18 +201,18 @@ function TokenCreator({ adapter }: Props) {
         {canSubmit ? (
           <button
             onClick={(e) => handleSubmitCreateCoin(e)}
-            className="bg-red-px-4 m-auto rounded-md border-2 border-red-500 bg-red-200 px-4 py-2 text-black transition-all hover:bg-red-500 hover:text-white"
+            className="bg-red-px-4 m-auto rounded-md bg-teal-200 px-4 py-2 text-black transition-all hover:bg-teal-500 hover:text-stone-100"
           >
             Submit
           </button>
         ) : (
-          <button className="bg-red-px-4 m-auto rounded-md border-2 border-red-500 bg-red-200 px-4 py-2 text-black brightness-75 transition-all hover:brightness-50">
+          <button className="bg-red-px-4 m-auto rounded-md bg-teal-200 px-4 py-2 text-black brightness-75 transition-all hover:brightness-50">
             Submit
           </button>
         )}
         {isCompiling ? (
           <div className="flex flex-col items-center justify-center">
-            <p className="mb-2 text-center font-bold text-red-500">
+            <p className="mb-2 text-center font-bold text-teal-500">
               Compiling...
             </p>
             <img
