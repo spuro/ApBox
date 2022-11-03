@@ -26,7 +26,7 @@ function TokenCreator({ adapter }: Props) {
   const handleSubmitCreateCoin = async (e: any) => {
     e.preventDefault();
 
-    let params: RequestInit = {
+    const params: RequestInit = {
       headers: {
         "Content-Type": "application/json",
         // 'Content-Type': 'application/x-www-form-urlencoded',
