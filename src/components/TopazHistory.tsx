@@ -145,7 +145,7 @@ const EventHistory = ({ event }) => {
       <div className="flex w-[100px] items-center justify-center ">
         <a
           href={`https://www.topaz.so/assets/${event.data.token_id.token_data_id.collection.replace(
-            " ",
+            /\s+/g,
             "-"
           )}-${event.data.token_id.token_data_id.creator.slice(
             2,
