@@ -67,6 +67,7 @@ function NFTHistory({ adapter, addressResources }: Props) {
     txHistory = txHistory.sort(
       (a, b) => parseFloat(b.sequence_number) - parseFloat(a.sequence_number)
     );
+    console.log(txHistory);
     setTopazHistory(txHistory);
   };
 
@@ -113,32 +114,49 @@ export default NFTHistory;
 
 const EventHistory = ({ event }) => {
   return (
-    <div className="grid grid-cols-3 gap-4 rounded-md border-2 border-teal-200 p-2">
-      <div className="flex flex-col">
-        <p className="text-teal-200">Collection:</p>
-        <p className="font-bold text-stone-100">
-          {event.data.token_id.token_data_id.collection}
+    <div className="flex flex-row rounded-md border-2 border-teal-200 ">
+      <div className="grid w-full grid-cols-3 gap-4 p-4">
+        <div className="flex flex-col">
+          <p className="text-teal-200">Collection:</p>
+          <p className="font-bold text-stone-100">
+            {event.data.token_id.token_data_id.collection}
+          </p>
+        </div>
+        <div>
+          <p className="text-teal-200">Token name:</p>
+          <p className="font-bold text-stone-100">
+            {event.data.token_id.token_data_id.name}
+          </p>
+        </div>
+        <div>
+          <p className="text-teal-200 ">Price:</p>
+          <p className="font-bold text-stone-100">{`${(
+            event.data.price /
+            10 ** 8
+          ).toFixed(2)} $APT`}</p>
+        </div>
+        <p
+          style={{ gridColumn: "1/4" }}
+          className="w-full text-center text-sm text-teal-100"
+        >
+          {timeAgo(event.data.timestamp)}
         </p>
       </div>
-      <div>
-        <p className="text-teal-200">Token name:</p>
-        <p className="font-bold text-stone-100">
-          {event.data.token_id.token_data_id.name}
-        </p>
+      <div className="flex w-[100px] items-center justify-center ">
+        <a
+          href={`https://www.topaz.so/assets/${event.data.token_id.token_data_id.collection.replace(
+            " ",
+            "-"
+          )}-${event.data.token_id.token_data_id.creator.slice(
+            2,
+            12
+          )}/${event.data.token_id.token_data_id.name.replace("#", "%23")}/0`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <p className="text-teal-200">View</p>
+        </a>
       </div>
-      <div>
-        <p className="text-teal-200 ">Price:</p>
-        <p className="font-bold text-stone-100">{`${(
-          event.data.price /
-          10 ** 8
-        ).toFixed(2)} $APT`}</p>
-      </div>
-      <p
-        style={{ gridColumn: "1/4" }}
-        className="w-full text-center text-sm text-teal-100"
-      >
-        {timeAgo(event.data.timestamp)}
-      </p>
     </div>
   );
 };
