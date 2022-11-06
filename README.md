@@ -12,19 +12,9 @@ Creates a CoinStore resource on the users account. Useful for when you want to r
 
 [Learn more about the CoinStore standard](https://aptos.dev/concepts/coin-and-token/aptos-coin/#depositing-coins-into-coinstore)
 
----
+### Latest Topaz NFT Transactions
 
-## In the works:
-
-### Coin Creator
-
-Will allow users to create their own Coin very easily through a graphical interface, no need to mess around with CLI. Will allow custom symbol, name, icon and supply parameters.
-
-### Educational content
-
-Want to properly explain HOW these tools work, and WHY they are necessary.
-
----
+Just a simple list of the latest txes from Topaz (NFT Marketplace).
 
 ---
 
